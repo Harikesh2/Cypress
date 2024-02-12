@@ -12,18 +12,21 @@ describe('Checking Login', ()=>{
   
       
     it('Mobile View (Positive-1)', ()=>{
-        cy.get("[name$='email']").type("mths83478@gmail.com");
-        cy.get("input[placeholder='Password']").type("Hari@2809");
-        cy.get("#kt_login_signin_submit").click();
-        // cy.get(".ki.ki-bold-menu.text-hover-primary.icon-md").click()
+      cy.fixture('userData.json').then((user)=>{
+            cy.get("[name$='email']").type(user.userEmail);
+            cy.get("input[placeholder='Password']").type(user.userPassword);
+            })
+            cy.get("#kt_login_signin_submit").click();
   
     })
       
     it('Mobile View (Positive-2)', ()=>{
       // performing Sign-Up
-          cy.get("[name$='email']").type("mths83478@gmail.com");
-          cy.get("input[placeholder='Password']").type("Hari@2809");
-          cy.get("#kt_login_signin_submit").click();
+      cy.fixture('userData.json').then((user)=>{
+            cy.get("[name$='email']").type(user.userEmail);
+            cy.get("input[placeholder='Password']").type(user.userPassword);
+            })
+            cy.get("#kt_login_signin_submit").click();
   
      // Checking Dashboard is visible or not
           cy.get('#kt_wrapper').should('be.visible');
@@ -43,17 +46,21 @@ describe('Checking Login', ()=>{
     })
 
     it('Mobile View (Negative-1)', ()=>{
-        cy.get("[name$='email']").type("mths83478@gmail.com");
-        cy.get("input[placeholder='Password']").type("Har@2809");
-        cy.get("#kt_login_signin_submit").click();
+      cy.fixture('userData.json').then((user)=>{
+            cy.get("[name$='email']").type(user.userEmail);
+            cy.get("input[placeholder='Password']").type(user.userPassword);
+            })
+            cy.get("#kt_login_signin_submit").click();
         // cy.get(".ki.ki-bold-menu.text-hover-primary.icon-md").click()
   
     })
 
     it('Mobile View (Negative-2)', ()=>{
         // performing Sign-Up
-            cy.get("[name$='email']").type("mths83478@gmail.com");
-            cy.get("input[placeholder='Password']").type("Hari@2809");
+        cy.fixture('userData.json').then((user)=>{
+            cy.get("[name$='email']").type(user.userEmail);
+            cy.get("input[placeholder='Password']").type(user.password);
+            })
             cy.get("#kt_login_signin_submit").click();
     
        // Checking Dashboard is visible or not

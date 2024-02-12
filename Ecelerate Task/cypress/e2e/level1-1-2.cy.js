@@ -11,9 +11,11 @@ describe('Checking SignOut', ()=>{
       
     it('Sign-Out Task (Positive)', ()=>{
       // performing Sign-Up
-          cy.get("[name$='email']").type("mths83478@gmail.com");
-          cy.get("input[placeholder='Password']").type("Hari@2809");
-          cy.get("#kt_login_signin_submit").click();
+      cy.fixture('userData.json').then((user)=>{
+            cy.get("[name$='email']").type(user.userEmail);
+            cy.get("input[placeholder='Password']").type(user.userPassword);
+            })
+            cy.get("#kt_login_signin_submit").click();
   
      // Checking Dashboard is visible or not
           cy.get('#kt_wrapper').should('be.visible');
@@ -33,9 +35,11 @@ describe('Checking SignOut', ()=>{
     })
     it('Sign-Out Task (Negative)', ()=>{
       // performing Sign-Up
-          cy.get("[name$='email']").type("mths83478@gmail.com");
-          cy.get("input[placeholder='Password']").type("Hari@2809");
-          cy.get("#kt_login_signin_submit").click();
+      cy.fixture('userData.json').then((user)=>{
+            cy.get("[name$='email']").type(user.userEmail);
+            cy.get("input[placeholder='Password']").type(user.userPassword);
+            })
+            cy.get("#kt_login_signin_submit").click();
   
      // Checking Dashboard is visible or not
           cy.get('#kt_wrapper').should('be.visible');

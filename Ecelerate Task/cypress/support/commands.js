@@ -23,3 +23,22 @@
 //
 // -- This will overwrite an existing command --
 // Cypress.Commands.overwrite('visit', (originalFn, url, options) => { ... })
+
+Cypress.Commands.add('login', () => { 
+    cy.visit("https://globalshala-iam.ml/auth/login")
+    cy.fixture('userData.json').then((user)=>{
+        cy.get("[name$='email']").type(user.userEmail);
+        cy.get("input[placeholder='Password']").type(user.userPassword);
+        })
+     cy.get("#kt_login_signin_submit").click();
+    
+ })
+
+ import 'cypress-file-upload';
+
+ Cypress.Commands.add('getIframe', (iframe)=>{
+   return cy.get(iframe)
+          .its('0.contentDocument.body')
+          .should('be.visible')
+          .then(cy.wrap)
+ })

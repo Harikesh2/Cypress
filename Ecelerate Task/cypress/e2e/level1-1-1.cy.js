@@ -11,36 +11,36 @@ describe('Checking Login', ()=>{
   
       
     it('Positive 1 login Task', ()=>{
-        cy.get("[name$='email']").type("mths83478@gmail.com");
-        cy.get("input[placeholder='Password']").type("Hari@2809");
+        cy.fixture('userData.json').then((user)=>{
+        cy.get("[name$='email']").type(user.userEmail);
+        cy.get("input[placeholder='Password']").type(user.userPassword);
+        })
         cy.get("#kt_login_signin_submit").click();
-        // cy.get(".ki.ki-bold-menu.text-hover-primary.icon-md").click()
-  
     })
       
       
     it('Positive 2 login Task', ()=>{
-        cy.get("[name$='email']").type("davidmacman70@gmail.com");
-        cy.get("input[placeholder='Password']").type("Hari@2809");
-        cy.get("#kt_login_signin_submit").click();
-        // cy.get(".ki.ki-bold-menu.text-hover-primary.icon-md").click()
-  
+        cy.fixture('userData.json').then((user)=>{
+            cy.get("[name$='email']").type(user.userEmail);
+            cy.get("input[placeholder='Password']").type(user.userPassword);
+            })
+            cy.get("#kt_login_signin_submit").click();
     })
       
     it('Negative -1 login Task', ()=>{
-        cy.get("[name$='email']").type("mths8347@gmail.com");
-        cy.get("input[placeholder='Password']").type("Hari@2809");
-        cy.get("#kt_login_signin_submit").click();
-        // cy.get(".ki.ki-bold-menu.text-hover-primary.icon-md").click()
-  
+        cy.fixture('userData.json').then((user)=>{
+            cy.get("[name$='email']").type(user.userEmail);
+            cy.get("input[placeholder='Password']").type(user.password);
+            })
+            cy.get("#kt_login_signin_submit").click();
     })
 
     it('Negative -2 login Task', ()=>{
-        cy.get("[name$='email']").type("mths83478@gmail.com");
-        cy.get("input[placeholder='Password']").type("Har@2809");
-        cy.get("#kt_login_signin_submit").click();
-        // cy.get(".ki.ki-bold-menu.text-hover-primary.icon-md").click()
-  
+        cy.fixture('userData.json').then((user)=>{
+            cy.get("[name$='email']").type(user.userEmail);
+            cy.get("input[placeholder='Password']").type(user.password);
+            })
+            cy.get("#kt_login_signin_submit").click();
     })
       
    

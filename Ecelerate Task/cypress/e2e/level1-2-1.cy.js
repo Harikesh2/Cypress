@@ -1,5 +1,7 @@
 /// <reference types="cypress"/>
 
+const { cloneDeep } = require("cypress/types/lodash")
+
 describe('Dashboard Element checking',()=>{
 
     beforeEach(()=>{
@@ -11,10 +13,13 @@ describe('Dashboard Element checking',()=>{
     it('checking all element',()=>{
 
          // performing Sign-Up
-         cy.get("[name$='email']").type("mths83478@gmail.com");
-         cy.get("input[placeholder='Password']").type("Hari@2809");
-         cy.get("#kt_login_signin_submit").click();
- 
+         cy.fixture('userData.json').then((user)=>{
+          cy.get("[name$='email']").type(user.userEmail);
+          cy.get("input[placeholder='Password']").type(user.userPassword);
+          })
+          cy.get("#kt_login_signin_submit").click();
+
+
     // Checking Dashboard is visible or not
          cy.get('#kt_wrapper').should('be.visible');
  
@@ -40,3 +45,42 @@ describe('Dashboard Element checking',()=>{
 
     })
 })
+
+
+
+// cy.get('.image-input-wrapper')
+
+
+// DOB
+// cy.get(':nth-child(5) > .col-lg-9 > .input-group > .form-control')
+
+// GENDER
+// cy.get(':nth-child(5) > .col-lg-9 > .input-group > .form-control')
+
+
+// PHONE cCODE
+// cy.get('.mat-select-arrow')
+
+// PHONE Number
+// cy.get('.phone-number-padding')
+
+// ALERNATE EMAIL
+// cy.get('#validateEmail')
+
+
+// cy.get('#validateAddressLine1')
+
+// cy.get('#validateAddressLine2')
+
+// cy.get('#validateCity')
+
+// cy.get('#validateState')
+
+// cy.get('#validateCountry')
+
+
+// cy.get('#validateZipCode')
+
+
+// CLICK SAVE
+// cy.get('.btn-success > .indicator-label')
