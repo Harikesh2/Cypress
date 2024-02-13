@@ -1,11 +1,9 @@
 /// <reference types="cypress"/>
 
-const { cloneDeep } = require("cypress/types/lodash")
-
 describe('Dashboard Element checking',()=>{
 
     beforeEach(()=>{
-          cy.viewport('iphone-6')
+          cy.viewport(746,600);
           cy.visit("https://globalshala-iam.ml/auth/login")
         })
       
@@ -22,27 +20,29 @@ describe('Dashboard Element checking',()=>{
 
     // Checking Dashboard is visible or not
          cy.get('#kt_wrapper').should('be.visible');
+
+         // my success
+              cy.get(':nth-child(2) > .col-xxl-4').should('be.visible')
+
+
+              // skill wise section
+              cy.get(':nth-child(1) > .col-xxl-8').should('be.visible')
  
-        
-  // Checking the My Success 
-         cy.get(".card.card-custom.bg-gray-100.card-stretch.gutter-b").should('be.visible')
 
-  //  Checking Skill wise Points
-         cy.get("#skillWisePoints").should('be.visible')
-
- //   Action needed section
-         cy.get("div[class='col-lg-12 col-xxl-4 ng-star-inserted'] div[class='card card-custom card-stretch gutter-b']").should('be.visible')
-
-//  New Opportunities
-         cy.get("div[class='col-lg-12 col-xxl-8'] div[class='card card-custom card-stretch gutter-b ng-star-inserted']").should('be.visible')
+              // activitiy
+              cy.get('app-lists-widget9 > .card').should('be.visible')
 
 
-// experience gps
-         cy.get("div[class='col-lg-12 col-xxl-12'] div[class='card card-custom card-stretch gutter-b ng-star-inserted']").should('be.visible')
+              // opportutinity
+              cy.get(':nth-child(2) > .col-xxl-8').should('be.visible')
 
-         cy.get("div[class='col-lg-12 col-xxl-12'] div[class='card card-custom card-stretch gutter-b ng-star-inserted']").should('be.visible')
-        
 
+              // experience
+              cy.get(':nth-child(3) > .col-lg-12').should('be.visible')
+
+
+              // impact
+              cy.get('.col-12').should('be.visible')
     })
 })
 
@@ -84,3 +84,27 @@ describe('Dashboard Element checking',()=>{
 
 // CLICK SAVE
 // cy.get('.btn-success > .indicator-label')
+
+
+.opportunities[0].ref_properties
+
+
+       
+//   // Checking the My Success 
+//          cy.get(".card.card-custom.bg-gray-100.card-stretch.gutter-b").should('be.visible')
+
+//   //  Checking Skill wise Points
+//          cy.get("#skillWisePoints").should('be.visible')
+
+//  //   Action needed section
+//        //   cy.get("div[class='col-lg-12 col-xxl-4 ng-star-inserted'] div[class='card card-custom card-stretch gutter-b']").should('be.visible')
+
+// //  New Opportunities
+//          cy.get("div[class='col-lg-12 col-xxl-8'] div[class='card card-custom card-stretch gutter-b ng-star-inserted']").should('be.visible')
+
+
+// // experience gps
+//          cy.get("div[class='col-lg-12 col-xxl-12'] div[class='card card-custom card-stretch gutter-b ng-star-inserted']").should('be.visible')
+
+//          cy.get("div[class='col-lg-12 col-xxl-12'] div[class='card card-custom card-stretch gutter-b ng-star-inserted']").should('be.visible')
+        

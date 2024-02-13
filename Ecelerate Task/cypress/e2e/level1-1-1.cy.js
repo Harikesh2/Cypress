@@ -4,7 +4,6 @@
 describe('Checking Login', ()=>{
 
     beforeEach(()=>{
-    //   cy.viewport('iphone-6')
       cy.visit("https://globalshala-iam.ml/auth/login")
     })
   
@@ -47,3 +46,23 @@ describe('Checking Login', ()=>{
   })
   
   
+
+
+
+
+  //  targeting the user section option
+  cy.get('#kt_aside_toggle').click()
+
+
+   
+//      ".btn.btn-info.btn-sm.cursor-pointer.mt-3"
+          
+//     // targetting the dropdown 
+//             cy.get(".ki.ki-bold-menu.text-hover-primary.icon-md").click()
+
+
+cy.get('#kt_header_mobile_topbar_toggle')
+
+cy.get(':nth-child(5) > .btn')
+
+cy.get('.topbar-item.ng-star-inserted > .btn')

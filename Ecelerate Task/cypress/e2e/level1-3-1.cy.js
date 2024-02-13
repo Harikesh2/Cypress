@@ -64,3 +64,25 @@ describe('Profile Section',()=>{
   });
 
 })
+
+
+
+
+// my success
+cy.get(':nth-child(2) > .col-xxl-4')
+
+
+// skill wise section
+cy.get(':nth-child(1) > .col-xxl-8') 
+
+// activitiy
+cy.get('app-lists-widget9 > .card')
+
+// opportutinity
+cy.get(':nth-child(2) > .col-xxl-8')
+
+// experience
+cy.get(':nth-child(3) > .col-lg-12')
+
+// impact
+cy.get('.col-12')
