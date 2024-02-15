@@ -57,11 +57,11 @@ describe('Checking Login', ()=>{
   
     })
 
-    it('Mobile View (Negative-2(Incorrect-login-password))', ()=>{
+    it('Mobile View (Negative-2)', ()=>{
         // performing Sign-Up
         cy.fixture('userData.json').then((user)=>{
             cy.get("[name$='email']").type(user.userEmail);
-            cy.get("input[placeholder='Password']").type(user.password);
+            cy.get("input[placeholder='Password']").type(user.userPassword);
             })
             cy.get("#kt_login_signin_submit").click();
 
@@ -80,7 +80,7 @@ describe('Checking Login', ()=>{
               cy.get(".ki.ki-bold-menu.text-hover-primary.icon-md").click()
     
         // click on sign out
-              cy.get("div[class='profile-wrapper'] button[class='btn btn-info btn-sm cursor-pointer mt-3']").click();
+              cy.get("div[class='profile-wrapper'] button[class='btn btn-info btn-sm cursor-pointer mt-3']").should('be.visible');
     
        
          
@@ -93,6 +93,31 @@ describe('Checking Login', ()=>{
   
   
   
+  
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
   
   
   

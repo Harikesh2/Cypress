@@ -48,6 +48,33 @@ describe('Dashboard Element checking',()=>{
 
 
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 // cy.get('.image-input-wrapper')
 
 
@@ -86,7 +113,7 @@ describe('Dashboard Element checking',()=>{
 // cy.get('.btn-success > .indicator-label')
 
 
-.opportunities[0].ref_properties
+// .opportunities[0].ref_properties
 
 
        

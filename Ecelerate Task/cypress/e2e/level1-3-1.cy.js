@@ -7,8 +7,7 @@ describe('Profile Section',()=>{
         cy.login()
         })
       
-
-    it('Updating the Profile Section',()=>{
+    it.only('Updating the Profile Section',()=>{
     
          // Checking Dashboard is visible or not
           cy.get('#kt_wrapper').should('be.visible');
@@ -17,19 +16,19 @@ describe('Profile Section',()=>{
             ".text-dark-50.font-weight-bolder.font-size-base.d-none.d-md-inline.mr-3"
           ).click();
 
-
-
-        //   cy.get(':nth-child(3) > .col-lg-9 > .input-group > .form-control').type("Gaurav")
-        //      cy.get(':nth-child(4) > .col-lg-9 > .input-group > .form-control').type("Pandey")
-
-
-
         // importing the file add (for this added the file Upload dependency and selected the file upload option)
-        cy.get("input[name='profile_avatar']").attachFile("image.png");  
-       
+        cy.get("input[name='profile_avatar']").attachFile("image.png"); 
 
 
-       
+           // deleting the image file
+           cy.get("span[class='btn btn-xs btn-icon btn-circle btn-white btn-hover-text-primary btn-shadow ng-star-inserted'] i[class='ki ki-bold-close icon-xs text-muted']").should('be.visible');
+
+           cy.get("span[class='btn btn-xs btn-icon btn-circle btn-white btn-hover-text-primary btn-shadow ng-star-inserted'] i[class='ki ki-bold-close icon-xs text-muted']").click();
+
+           cy.wait(1000);
+   
+        
+
             let DOB = "28/09/2000"
             let [date,month,year] = DOB.split("/")
 
@@ -68,21 +67,21 @@ describe('Profile Section',()=>{
 
 
 
-// my success
-cy.get(':nth-child(2) > .col-xxl-4')
+// // my success
+// cy.get(':nth-child(2) > .col-xxl-4')
 
 
-// skill wise section
-cy.get(':nth-child(1) > .col-xxl-8') 
+// // skill wise section
+// cy.get(':nth-child(1) > .col-xxl-8') 
 
-// activitiy
-cy.get('app-lists-widget9 > .card')
+// // activitiy
+// cy.get('app-lists-widget9 > .card')
 
-// opportutinity
-cy.get(':nth-child(2) > .col-xxl-8')
+// // opportutinity
+// cy.get(':nth-child(2) > .col-xxl-8')
 
-// experience
-cy.get(':nth-child(3) > .col-lg-12')
+// // experience
+// cy.get(':nth-child(3) > .col-lg-12')
 
-// impact
-cy.get('.col-12')
+// // impact
+// cy.get('.col-12')

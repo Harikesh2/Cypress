@@ -48,7 +48,7 @@ describe('Checking SignOut', ()=>{
          cy.get(".btn.btn-icon.btn-icon-mobile.w-auto.btn-clean.d-flex.align-items-center.btn-lg.px-2").click()
 
          //   checking visibality of user section
-                  cy.get("#kt_content").should('be.visible');
+         cy.get("#kt_content").should('be.visible');
   
     })
   
