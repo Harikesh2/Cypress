@@ -5,12 +5,10 @@ describe('University Page', ()=>{
     
     it('automation of iframe in University Page', ()=>{
      cy.visit("https://globalshala-iam.ml/external/partner/000000000GB102A6JB98182ZHC")
-     cy.get('iframe')
-      .its("0.contentDocument")
-      .its('body')
-      .then(cy.wrap).find('[class="ytp-popup ytp-contextmenu"]').should('be.visible') 
-        
-        
+    //  cy.get('iframe')
+    //   .its("0.contentDocument").its("body").then(cy.wrap).wait(2000).find('[aria-label="Play"]').should('be.visible');  
+
+    cy.get('iframe').its("contents").then(cy.wrap);
     })
   })
   

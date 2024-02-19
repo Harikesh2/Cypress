@@ -5,45 +5,80 @@ describe('Dashboard Element checking',()=>{
     beforeEach(()=>{
           cy.viewport(746,600);
           cy.visit("https://globalshala-iam.ml/auth/login")
+          cy.fixture('userData.json').then((user)=>{
+            cy.login(user.userEmail, user.userPassword)
+          })
+          cy.intercept('https://globalshala-iam.ml:8081/api/v1/notifications/all').as('Dashborad')
+
+             
+        // intercepting the api 
+        cy.intercept('https://globalshala-iam.ml:8081/api/v1/dashboard/mySuccess').as('ApiRequest')
         })
+
+        
       
 
     it('checking all element',()=>{
-
-         // performing Sign-Up
-         cy.fixture('userData.json').then((user)=>{
-          cy.get("[name$='email']").type(user.userEmail);
-          cy.get("input[placeholder='Password']").type(user.userPassword);
-          })
-          cy.get("#kt_login_signin_submit").click();
-
-
-    // Checking Dashboard is visible or not
+        // Verify the URL contains "/dashboard"
+        cy.url().should("include", "/dashboard");
+        cy.get("h5").should("have.text", " Dashboard ");
+        // Checking Dashboard is visible or not
          cy.get('#kt_wrapper').should('be.visible');
-
+        //  toggle button
+         cy.get("#kt_header_mobile_topbar_toggle").and("be.visible").click();
          // my success
               cy.get(':nth-child(2) > .col-xxl-4').should('be.visible')
-
-
               // skill wise section
               cy.get(':nth-child(1) > .col-xxl-8').should('be.visible')
- 
-
               // activitiy
               cy.get('app-lists-widget9 > .card').should('be.visible')
-
-
               // opportutinity
               cy.get(':nth-child(2) > .col-xxl-8').should('be.visible')
-
-
               // experience
               cy.get(':nth-child(3) > .col-lg-12').should('be.visible')
-
-
               // impact
               cy.get('.col-12').should('be.visible')
+              // footer 
+            cy.get("#kt_footer").should("be.visible");
+            //  content
+             cy.get("#kt_content").should("be.visible");
+              // Verify the URL contains "/dashboard"
+                 cy.url().should("include", "/dashboard");
     })
+
+
+    it('Checking Request 200 300 304 with dashboard',()=>{
+         // Verify the URL contains "/dashboard"
+         cy.url().should("include", "/dashboard");
+        cy.wait('@Dashborad').then((interception) => {
+            // Assert on the intercepted request
+            expect(interception.request.url).to.eq('https://globalshala-iam.ml:8081/api/v1/notifications/all');
+            expect(interception.response.statusCode).to.be.oneOf([200,300,304]);
+          });
+          // Verify the URL contains "/dashboard"
+         cy.url().should("include", "/dashboard");
+      });
+
+
+
+      
+      it('Checking UI data with api data',()=>{
+        // Verify the URL contains "/dashboard"
+         cy.url().should("include", "/dashboard");
+        cy.wait('@ApiRequest').then((interception) => {
+            // Assert on the intercepted request
+            expect(interception.request.url).to.eq('https://globalshala-iam.ml:8081/api/v1/dashboard/mySuccess');
+            cy.wait(1000)
+        //    getting the data 
+            expect(interception.response.body.data.success.totalActivities).to.be.equal(2);
+         // comparing the data with UI 
+            cy.get('.bg-light-success > .d-block').should('have.text',interception.response.body.data.success.totalActivities)
+          })  
+          // Verify the URL contains "/dashboard"
+         cy.url().should("include", "/dashboard");      
+  });
+
+
 })
 
 
